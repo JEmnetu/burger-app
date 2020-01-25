@@ -1,0 +1,24 @@
+{
+    "name": "burger-app",
+    "version": "1.0.0",
+    "description": "An application that logs will log the types of burgers that users would like to eat.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JEmnetu/burger-app.git"
+    },
+    "dependencies": {
+        "express": "4.17.1",
+        "express-handlebars": "3.1.0",
+        "mysql": "2.18.1"
+    },
+    "author": "Jacob Habtemariam",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/JEmnetu/burger-app/issues"
+    },
+    "homepage": "https://github.com/JEmnetu/burger-app#readme"
+}
