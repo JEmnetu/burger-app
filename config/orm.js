@@ -1,4 +1,5 @@
 const connection = require("./connection.js");
+const consT = require("console.table");
 
 let orm = {
 
@@ -6,7 +7,7 @@ let orm = {
         let queryString = "SELECT * FROM ??";
         connection.query(queryString, [table], (err, data) => {
             if (err) throw err;
-            console.log(data);
+            console.table(data);
         });
     }
 }
