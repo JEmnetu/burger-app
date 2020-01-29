@@ -1,0 +1,27 @@
+<h3>devoured</h3>
+{{#each burgers}}
+{{#if devoured}} 
+<ul>
+    {{!-- {{#each burgers}} --}}
+    <li>
+        {{burger_name}} {{id}} {{devoured}}
+    </li>
+
+</ul>
+{{/if}}
+{{/each}}
+
+
+<h3>Uneaten</h3>
+{{#each burgers}}
+{{#unless uneaten}} 
+<ul>
+    {{!-- {{#each burgers}} --}}
+    <li>
+        {{burger_name}} {{id}} {{devoured}}
+    </li>
+</ul>
+
+{{/unless}}
+{{/each}}
+
