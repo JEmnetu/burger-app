@@ -4,25 +4,53 @@ let consT = require("console.table");
 
 let router = express.Router();
 
+//Disokay all burgers
 router.get("/", (req, res) => {
 
-    res.render("index", { temp: "Jacob's Burger App", data: "This is my test for handlebars" });
+    burger.all((data) => {
+        let burgerObj = {
+            burgers: data
+        };
+        console.log(burgerObj);
+        res.render("burgers", burgerObj);
+    });
 
 
 });
-
-router.get("/burgers", (req, res) => {
+// Display JSON data for all burgers
+router.get("/api/burgers", (req, res) => {
     burger.all((data) => {
-        let hbObj = {
-            burgers: (data)
-        };
-        console.log(hbObj);
-        res.render("burgers", hbObj);
-    });
+        res.json(data);
 
+    });
 })
 
+// Add a new burger
+router.post("/api/burgers", (req, res) => {
+    burger.create(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], (result) => {
+        res.json({ id: result.insertId });
+    });
+});
 
+
+//Update a burger
+
+
+
+// Delete a burger
+router.delete("/api/burgers/:id", (req, res) => {
+    let condition = "id = " + req.params.id;
+
+    console.log("condition", condition);
+
+    burger.delete(condition, (result) => {
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
 
 
 

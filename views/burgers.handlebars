@@ -1,10 +1,11 @@
-<h3>devoured</h3>
+<h3>Devoured</h3>
+<hr>
 {{#each burgers}}
 {{#if devoured}} 
 <ul>
     {{!-- {{#each burgers}} --}}
     <li>
-        {{burger_name}} {{id}} {{devoured}}
+        {{burger_name}} <button>I'm good</button> <button>DELETE</button>
     </li>
 
 </ul>
@@ -13,15 +14,36 @@
 
 
 <h3>Uneaten</h3>
+<hr>
 {{#each burgers}}
 {{#unless uneaten}} 
 <ul>
     {{!-- {{#each burgers}} --}}
     <li>
-        {{burger_name}} {{id}} {{devoured}}
+        {{burger_name}} <button class="change-status" data-id="{{id}}" data-consumed="{{devoured}}">Eat This!</button> 
+        <button class="delete-burger" data-id="{{id}}">DELETE</button>
     </li>
 </ul>
 
 {{/unless}}
 {{/each}}
 
+
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+<div class="form-group">
+    <label for="bg">Burger Name:</label>
+    <input type="text" id="bg" name="name">
+</div>
+
+<div class="form-group">
+<label for="devoured">Devoured?</label><br>
+<input type="radio" name="devoured" value="1" checked> Devoured<br>
+<input type="radio" name="devoured" value="0"> Uneaten
+
+</div>
+
+<button type="submit" class="addBurger"> Add a Burger</button>
+</form>

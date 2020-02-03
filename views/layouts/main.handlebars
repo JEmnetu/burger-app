@@ -4,13 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{temp}}</title>
+    
+    <script src="https://code.jquery.com/jquery.js"></script>
+	{{!-- <script src="../../public/assets/js/index.js"></script> --}}
     <style>
-        h1{color:red;}
-        body{background: gray;}
+        h1 { color: red;}
+
+        body {background: gray;}
+
+        li { background-color: rgb(0, 102, 255);}
     </style>
+    {{!-- <link rel="stylesheet" href="../../public/assets/css/style.css" type="text/css"/> --}}
+    <title>{{temp}}</title>
+    
 </head>
 <body>
     {{{body}}}
 </body>
+
+<script>
+$(function() {
+    // User clicks button to create a burger
+    $(".addBurger").on("click", (event) => {
+        event.preventDefault();
+        
+
+        const newBurger = { burger_name: $("#bg").val().trim(), devoured: 0 }
+
+        // console.log(newBurger);
+
+        $.ajax("/api/burgers", {
+                type: "POST",
+                data: newBurger
+            })
+            .then(() => {
+                console.log("Created new burger" + newBurger.burger_name);
+                location.reload();
+            })
+
+    });
+})
+
+
+
+
+
+</script>
 </html>
